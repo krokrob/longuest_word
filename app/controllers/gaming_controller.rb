@@ -13,6 +13,12 @@ class GamingController < ApplicationController
     @grid = params[:grid].split(//)
     start_time = params[:start_time].to_time
     @result = run_game(@my_word, @grid, start_time, finish_time)
+    session[:number_of_session] ||= 0
+    session[:number_of_session] +=1
+    session[:total_score] ||= 0
+    session[:total_score] += @result[:score]
+    session[:avg_score] ||= 0
+    session[:avg_score] = session[:total_score] / session[:number_of_session]
   end
 
 private
