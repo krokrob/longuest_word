@@ -1,2 +1,15 @@
-<h1>Gaming#score</h1>
-<p>Find me in app/views/gaming/score.html.erb</p>
+<h1>Results</h1>
+<h3>Here was your grid :</h3>
+<table>
+  <tr>
+    <% @grid.each do |letter| %>
+      <td><%= letter[0]  %></td>
+    <% end %>
+  </tr>
+</table>
+<h3>Your best shot : <%= @my_word %></h3>
+<h3>Score : <%= @result[:score] %></h3>
+<h3><%= @result[:message] %></h3>
+<h3>Elapsed time (s): <%= @result[:time] %></h3>
+<h3>French translation : <em><%= @result[:translation] %></em></h3>
+<%= link_to "Try again", game_path %>
